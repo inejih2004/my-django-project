@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="text-primary text-center">Modifier l'annonce</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Titre:</label>
+            <input type="text" class="form-control" name="titre" value="{{ annonce.titre }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Description:</label>
+            <textarea class="form-control" name="description" required>{{ annonce.description }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label>Catégorie:</label>
+            <select name="categorie" class="form-control">
+                {% for categorie in categories %}
+                    <option value="{{ categorie.id }}" {% if categorie == annonce.categorie %}selected{% endif %}>
+                        {{ categorie.nom }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Image actuelle:</label><br>
+            <img src="{{ annonce.image.url }}" alt="Image annonce" class="img-fluid" style="max-height: 200px;">
+        </div>
+        <div class="mb-3">
+            <label>Changer l'image:</label>
+            <input type="file" class="form-control" name="image">
+        </div>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <a href="{% url 'mes_annonces' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

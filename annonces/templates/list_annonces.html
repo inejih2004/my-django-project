@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <h2 class="text-center text-primary my-4">Liste des Annonces</h2>
+
+    <div class="d-flex justify-content-end mb-4">
+        <select id="categoryFilter" class="form-select w-25 stylish-dropdown">
+            <option value="">Toutes les catégories</option>
+            {% for categorie in categories %}
+    <option value="{{ categorie.nom }}">{{ categorie.nom }}</option>
+{% endfor %}
+
+        </select>
+    </div>
+
+    <div class="row g-4" id="annoncesContainer">
+        {% for annonce in annonces %}
+        <div class="col-md-4 annonce-card" data-category="{{ annonce.categorie }}">
+            <div class="card shadow-lg border-0 stylish-card">
+                <img src="{{ annonce.image.url }}" class="card-img-top stylish-image" style="height: 200px; object-fit: cover;"  alt="Image annonce">
+                <div class="card-body">
+                    <h5 class="card-title text-primary stylish-title">{{ annonce.titre }}</h5>
+                    <p class="card-text text-muted stylish-description">{{ annonce.description|truncatechars:100 }}</p>
+                    <span class="badge bg-info stylish-badge">{{ annonce.categorie }}</span>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <button class="btn btn-sm stylish-btn" data-id="{{ annonce.id }}">Détails</button>
+                        <small class="text-muted stylish-date">{{ annonce.date_creation|date:"d/m/Y" }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

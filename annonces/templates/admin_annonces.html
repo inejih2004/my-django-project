@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2 class="text-primary text-center mb-4">Gérer les Annonces</h2>
+    {% if annonces %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Catégorie</th>
+                    <th>Utilisateur</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for annonce in annonces %}
+                <tr>
+                    <td>{{ annonce.titre }}</td>
+                    <td>{{ annonce.categorie.nom }}</td>
+                    <td>{{ annonce.utilisateur.username }}</td>
+                    <td>
+                        <a href="{% url 'change_status' annonce.id 'Acceptée' %}" class="btn btn-success btn-sm">Accepter</a>
+                        <a href="{% url 'change_status' annonce.id 'Rejetée' %}" class="btn btn-danger btn-sm">Rejeter</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-center">Aucune annonce en attente.</p>
+    {% endif %}
+</div>
+{% endblock %}

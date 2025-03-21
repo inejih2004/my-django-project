@@ -1,0 +1,60 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Stylish Dropdown */
+.stylish-dropdown {
+    border-radius: 8px;
+    padding: 8px;
+    font-weight: bold;
+}
+
+/* Card Styles */
+.stylish-card {
+    transition: transform 0.3s ease-in-out;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.stylish-card:hover {
+    transform: scale(1.05);
+}
+
+.stylish-image {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.stylish-title {
+    font-weight: bold;
+}
+
+.stylish-description {
+    font-size: 14px;
+}
+
+.stylish-badge {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.stylish-btn {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+    transition: background 0.3s;
+}
+
+.stylish-btn:hover {
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+.stylish-date {
+    font-style: italic;
+    font-size: 12px;
+}
